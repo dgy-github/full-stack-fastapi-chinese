@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Full Stack FastAPI Template
 
 <a href="https://github.com/fastapi/full-stack-fastapi-template/actions?query=workflow%3ATest" target="_blank"><img src="https://github.com/fastapi/full-stack-fastapi-template/workflows/Test/badge.svg" alt="Test"></a>
@@ -237,3 +238,7 @@ Check the file [release-notes.md](./release-notes.md).
 ## License
 
 The Full Stack FastAPI Template is licensed under the terms of the MIT license.
+=======
+# full-stack-fastapi-chinese
+双语化前端页面
+>>>>>>> 6cf860eab55312f9a7875cc77f06bf6884e5bf17
