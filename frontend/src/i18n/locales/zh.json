@@ -1,0 +1,316 @@
+{
+  "common": {
+    "welcome": "欢迎",
+    "login": "登录",
+    "logout": "退出登录",
+    "submit": "提交",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "search": "搜索",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "somethingWentWrong": "出现了一些问题。",
+    "backTo": "返回",
+    "continue": "继续",
+    "actions": "操作"
+  },
+  "auth": {
+    "email": "邮箱",
+    "username": "用户名",
+    "fullName": "全名",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "newPassword": "新密码",
+    "currentPassword": "当前密码",
+    "forgotPassword": "忘记密码？",
+    "resetPassword": "重置密码",
+    "recoverPassword": "密码恢复",
+    "loginTitle": "登录您的账户",
+    "signUpTitle": "创建您的账户",
+    "recoverPasswordTitle": "密码恢复",
+    "resetPasswordTitle": "重置您的密码",
+    "loginButton": "登录",
+    "signUpButton": "注册",
+    "sendResetLink": "发送重置链接",
+    "resetPasswordButton": "重置密码",
+    "continueButton": "继续",
+    "loginSuccess": "登录成功",
+    "signUpSuccess": "账户创建成功",
+    "recoverPasswordSuccess": "密码恢复邮件已成功发送。",
+    "resetPasswordSuccess": "密码重置成功",
+    "loginError": "凭据无效",
+    "signUpError": "创建账户失败",
+    "recoverPasswordError": "发送恢复邮件失败",
+    "resetPasswordError": "重置密码失败",
+    "logoutSuccess": "退出登录成功",
+    "noAccount": "还没有账户？",
+    "signUp": "注册",
+    "hasAccount": "已有账户？",
+    "signIn": "登录",
+    "backToLogin": "返回登录",
+    "recoverPasswordDescription": "密码恢复邮件将发送到注册的账户。",
+    "resetPasswordDescription": "请在下方输入您的新密码。",
+    "checkYourEmail": "请检查您的邮箱以获取密码重置链接。",
+    "tokenExpired": "密码重置令牌已过期",
+    "invalidToken": "无效的密码重置令牌"
+  },
+  "validation": {
+    "required": "此字段为必填项",
+    "usernameRequired": "用户名为必填项",
+    "emailRequired": "邮箱为必填项",
+    "emailInvalid": "邮箱地址无效",
+    "fullNameRequired": "全名为必填项",
+    "fullNameTooShort": "全名至少需要 {{min}} 个字符",
+    "nameInvalid": "名称无效",
+    "passwordRequired": "密码为必填项",
+    "passwordTooShort": "密码至少需要 {{min}} 个字符",
+    "passwordMismatch": "两次输入的密码不一致",
+    "passwordConfirmRequired": "密码确认为必填项",
+    "newPasswordRequired": "新密码为必填项"
+  },
+  "placeholder": {
+    "email": "邮箱",
+    "fullName": "全名",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "newPassword": "新密码",
+    "currentPassword": "当前密码",
+    "name": "名称",
+    "enterEmail": "请输入您的邮箱地址"
+  },
+  "settings": {
+    "title": "用户设置",
+    "tabs": {
+      "myProfile": "我的资料",
+      "password": "密码",
+      "appearance": "外观",
+      "dangerZone": "危险区域"
+    },
+    "profile": {
+      "title": "个人信息",
+      "name": "全名",
+      "email": "邮箱",
+      "emailNote": "如果您想更改邮箱，请联系管理员。",
+      "updateSuccess": "个人资料更新成功。"
+    },
+    "password": {
+      "title": "更改密码",
+      "currentPassword": "当前密码",
+      "newPassword": "新密码",
+      "confirmPassword": "确认新密码",
+      "updateSuccess": "密码更新成功。",
+      "updateError": "更新密码失败。"
+    },
+    "appearance": {
+      "title": "外观",
+      "theme": "主题",
+      "system": "跟随系统",
+      "light": "浅色模式",
+      "dark": "深色模式",
+      "language": "语言",
+      "english": "English",
+      "chinese": "中文"
+    },
+    "deleteAccount": {
+      "title": "删除账户",
+      "warning": "⚠️ 警告：此操作无法撤销！",
+      "description": "删除您的账户将永久删除您的所有数据，包括您的个人资料、设置和任何相关内容。请确保您想要继续。",
+      "confirmationTitle": "需要确认",
+      "confirmMessage": "您确定要删除您的账户吗？此操作无法撤销。",
+      "deleteButton": "删除我的账户",
+      "deleteSuccess": "账户删除成功。",
+      "deleteError": "删除账户失败。"
+    }
+  },
+  "nav": {
+    "home": "首页",
+    "settings": "设置",
+    "menu": "菜单",
+    "openMenu": "打开菜单"
+  },
+  "sidebar": {
+    "menu": "菜单",
+    "dashboard": "仪表板",
+    "items": "项目",
+    "userSettings": "用户设置",
+    "admin": "管理员",
+    "logout": "退出登录",
+    "loggedInAs": "当前登录为"
+  },
+   "dashboard": {
+    "greeting": "你好，{{name}}",
+    "welcomeBack": "欢迎回来，很高兴再次见到你！"
+  },
+  "users": {
+    "title": "用户管理",
+    "addUser": "添加用户",
+    "editUser": "编辑用户",
+    "deleteUser": "删除用户",
+    "you": "您",
+    "notAvailable": "无",
+    "table": {
+      "fullName": "全名",
+      "email": "邮箱",
+      "role": "角色",
+      "status": "状态",
+      "actions": "操作"
+    },
+    "roles": {
+      "superuser": "超级用户",
+      "admin": "管理员",
+      "user": "普通用户"
+    },
+    "status": {
+      "active": "活跃",
+      "inactive": "未激活"
+    },
+    "actions": {
+      "edit": "编辑用户",
+      "delete": "删除用户",
+      "viewDetails": "查看详情"
+    },
+    "addUserDialog": {
+      "title": "添加用户",
+      "fullName": "全名",
+      "fullNamePlaceholder": "请输入全名",
+      "email": "邮箱",
+      "emailPlaceholder": "user@example.com",
+      "password": "密码",
+      "passwordPlaceholder": "请输入密码",
+      "confirmPassword": "确认密码",
+      "isSuperuser": "是否为超级用户？",
+      "submit": "保存",
+      "cancel": "取消",
+      "success": "用户创建成功",
+      "error": "创建用户失败"
+    },
+    "editUserDialog": {
+      "title": "编辑用户",
+      "submit": "保存",
+      "success": "用户更新成功",
+      "error": "更新用户失败"
+    },
+    "deleteConfirm": {
+      "title": "删除用户",
+      "message": "您确定要删除此用户吗？此操作无法撤销。",
+      "allUsers": "所有用户将被删除。",
+      "confirm": "删除",
+      "cancel": "取消",
+      "success": "用户删除成功",
+      "error": "删除用户失败"
+    },
+    "actionsMenu": {
+      "label": "用户操作菜单"
+    },
+    "addUser": "添加用户",
+    "editUser": "编辑用户",
+    "deleteUser": "删除用户",
+    "addUserDialog": {
+      "title": "添加用户",
+      "description": "填写以下表单以向系统添加新用户。",
+      "fullName": "全名",
+      "fullNamePlaceholder": "请输入全名",
+      "email": "邮箱",
+      "emailPlaceholder": "user@example.com",
+      "password": "设置密码",
+      "passwordPlaceholder": "请输入密码",
+      "confirmPassword": "确认密码",
+      "isSuperuser": "是否为超级用户？",
+      "isActive": "是否激活？",
+      "submit": "保存",
+      "cancel": "取消",
+      "success": "用户创建成功。",
+      "error": "创建用户失败"
+    },
+    "editUserDialog": {
+      "title": "编辑用户",
+      "description": "更新以下用户详细信息。",
+      "fullName": "全名",
+      "fullNamePlaceholder": "全名",
+      "email": "邮箱",
+      "emailPlaceholder": "邮箱",
+      "password": "设置密码",
+      "passwordPlaceholder": "密码",
+      "passwordHelper": "留空以保持当前密码",
+      "confirmPassword": "确认密码",
+      "isSuperuser": "是否为超级用户？",
+      "isActive": "是否激活？",
+      "submit": "保存",
+      "cancel": "取消",
+      "success": "用户更新成功。",
+      "error": "更新用户失败"
+    },
+     "deleteUserDialog": {
+      "title": "删除用户",
+      "description": {
+        "part1": "与此用户关联的所有项目也将被",
+        "highlight": "永久删除。",
+        "part2": "您确定吗？此操作无法撤销。"
+      },
+      "submit": "删除",
+      "cancel": "取消",
+      "success": "用户已成功删除",
+      "error": "删除用户时发生错误"
+    }
+  },
+  "placeholder": {
+    "confirmPassword": "确认密码"
+  },
+  "items": {
+    "title": "项目管理",
+    "addItem": "添加项目",
+    "editItem": "编辑项目",
+    "deleteItem": "删除项目",
+    "table": {
+      "id": "ID",
+      "title": "标题",
+      "description": "描述",
+      "actions": "操作",
+      "noDescription": "无"
+    },
+    "emptyState": {
+      "title": "您还没有任何项目",
+      "description": "添加一个新项目开始使用"
+    },
+    "addItemDialog": {
+      "title": "添加项目",
+      "description": "填写详细信息以添加新项目。",
+      "titleLabel": "标题",
+      "titlePlaceholder": "项目标题",
+      "titleRequired": "标题为必填项。",
+      "descriptionLabel": "描述",
+      "descriptionPlaceholder": "项目描述",
+      "submit": "保存",
+      "cancel": "取消",
+      "success": "项目创建成功。",
+      "error": "创建项目失败"
+    },
+    "editItemDialog": {
+      "title": "编辑项目",
+      "description": "更新下面的项目详细信息。",
+      "submit": "保存",
+      "cancel": "取消",
+      "success": "项目更新成功。",
+      "error": "更新项目失败"
+    },
+    "deleteItemDialog": {
+      "title": "删除项目",
+      "description": "您确定要删除此项目吗？此操作无法撤销。",
+      "submit": "删除",
+      "cancel": "取消",
+      "success": "项目删除成功",
+      "error": "删除项目失败"
+    },
+    "actionsMenu": {
+      "label": "项目操作菜单",
+      "edit": "编辑项目",
+      "delete": "删除项目"
+    },
+    "noItems": "暂无项目",
+    "loadingItems": "加载中..."
+  }
+
+}

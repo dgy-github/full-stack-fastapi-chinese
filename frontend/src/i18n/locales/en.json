@@ -1,0 +1,279 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "login": "Log In",
+    "logout": "Logout",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "somethingWentWrong": "Something went wrong.",
+    "backTo": "Back to",
+    "continue": "Continue",
+    "actions": "Actions"
+  },
+  "auth": {
+    "email": "Email",
+    "username": "Username",
+    "fullName": "Full Name",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "newPassword": "New Password",
+    "currentPassword": "Current Password",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "recoverPassword": "Password Recovery",
+    "loginTitle": "Sign in to your account",
+    "signUpTitle": "Create your account",
+    "recoverPasswordTitle": "Password Recovery",
+    "resetPasswordTitle": "Reset Your Password",
+    "loginButton": "Log In",
+    "signUpButton": "Sign Up",
+    "sendResetLink": "Send Reset Link",
+    "resetPasswordButton": "Reset Password",
+    "continueButton": "Continue",
+    "loginSuccess": "Login successful",
+    "signUpSuccess": "Account created successfully",
+    "recoverPasswordSuccess": "Password recovery email sent successfully.",
+    "resetPasswordSuccess": "Password reset successfully",
+    "loginError": "Invalid credentials",
+    "signUpError": "Failed to create account",
+    "recoverPasswordError": "Failed to send recovery email",
+    "resetPasswordError": "Failed to reset password",
+    "logoutSuccess": "Logged out successfully",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "hasAccount": "Already have an account?",
+    "signIn": "Log In",
+    "backToLogin": "Back to Login",
+    "recoverPasswordDescription": "A password recovery email will be sent to the registered account.",
+    "resetPasswordDescription": "Please enter your new password below.",
+    "checkYourEmail": "Check your email for a password reset link.",
+    "tokenExpired": "Password reset token has expired",
+    "invalidToken": "Invalid password reset token"
+  },
+  "validation": {
+    "required": "This field is required",
+    "usernameRequired": "Username is required",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email address",
+    "fullNameRequired": "Full Name is required",
+    "fullNameTooShort": "Full Name must be at least {{min}} characters",
+    "nameInvalid": "Invalid name",
+    "passwordRequired": "Password is required",
+    "passwordTooShort": "Password must be at least {{min}} characters",
+    "passwordMismatch": "The passwords do not match",
+    "passwordConfirmRequired": "Password confirmation is required",
+    "newPasswordRequired": "New password is required"
+  },
+  "placeholder": {
+    "email": "Email",
+    "fullName": "Full Name",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "newPassword": "New Password",
+    "currentPassword": "Current Password",
+    "name": "Name",
+    "enterEmail": "Enter your email address"
+  },
+  "settings": {
+    "title": "User Settings",
+    "tabs": {
+      "myProfile": "My Profile",
+      "password": "Password",
+      "appearance": "Appearance",
+      "dangerZone": "Danger Zone"
+    },
+    "profile": {
+      "title": "Profile Information",
+      "name": "Full Name",
+      "email": "Email",
+      "emailNote": "If you want to change your email please contact the administrator.",
+      "updateSuccess": "Profile updated successfully."
+    },
+    "password": {
+      "title": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "updateSuccess": "Password updated successfully.",
+      "updateError": "Failed to update password."
+    },
+    "appearance": {
+      "title": "Appearance",
+      "theme": "Theme",
+      "system": "System",
+      "light": "Light Mode",
+      "dark": "Dark Mode",
+      "language": "Language",
+      "english": "English",
+      "chinese": "中文 (Chinese)"
+    },
+    "deleteAccount": {
+      "title": "Delete Account",
+      "warning": "⚠️ Warning: This action cannot be undone!",
+      "description": "Deleting your account will permanently remove all your data, including your profile, settings, and any associated content. Please make sure you want to proceed.",
+      "confirmationTitle": "Confirmation Required",
+      "confirmMessage": "Are you sure you want to delete your account? This action cannot be undone.",
+      "deleteButton": "Delete My Account",
+      "deleteSuccess": "Account deleted successfully.",
+      "deleteError": "Failed to delete account."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "settings": "Settings",
+    "menu": "Menu",
+    "openMenu": "Open Menu"
+  },
+  "sidebar": {
+    "menu": "Menu",
+    "dashboard": "Dashboard",
+    "items": "Items",
+    "userSettings": "User Settings",
+    "admin": "Admin",
+    "logout": "Log Out",
+    "loggedInAs": "Logged in as"
+  },
+  "dashboard": {
+    "greeting": "Hi, {{name}}",
+    "welcomeBack": "Welcome back, nice to see you again!"
+  },
+  "users": {
+    "title": "Users Management",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "you": "You",
+    "notAvailable": "N/A",
+    "table": {
+      "fullName": "Full name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "roles": {
+      "superuser": "Superuser",
+      "admin": "Admin",
+      "user": "User"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "edit": "Edit User",
+      "delete": "Delete User",
+      "viewDetails": "View Details"
+    },
+    "addUserDialog": {
+      "title": "Add User",
+      "description": "Fill in the form below to add a new user to the system.",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter full name",
+      "email": "Email",
+      "emailPlaceholder": "user@example.com",
+      "password": "Set Password",
+      "passwordPlaceholder": "Enter password",
+      "confirmPassword": "Confirm Password",
+      "isSuperuser": "Is superuser?",
+      "isActive": "Is active?",
+      "submit": "Save",
+      "cancel": "Cancel",
+      "success": "User created successfully.",
+      "error": "Failed to create user"
+    },
+    "editUserDialog": {
+      "title": "Edit User",
+      "description": "Update the user details below.",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Full name",
+      "email": "Email",
+      "emailPlaceholder": "Email",
+      "password": "Set Password",
+      "passwordPlaceholder": "Password",
+      "passwordHelper": "Leave blank to keep the current password",
+      "confirmPassword": "Confirm Password",
+      "isSuperuser": "Is superuser?",
+      "isActive": "Is active?",
+      "submit": "Save",
+      "cancel": "Cancel",
+      "success": "User updated successfully.",
+      "error": "Failed to update user"
+    },
+    "deleteUserDialog": {
+      "title": "Delete User",
+      "description": {
+        "part1": "All items associated with this user will also be",
+        "highlight": "permanently deleted.",
+        "part2": "Are you sure? You will not be able to undo this action."
+      },
+      "submit": "Delete",
+      "cancel": "Cancel",
+      "success": "The user was deleted successfully",
+      "error": "An error occurred while deleting the user"
+    },
+    "actionsMenu": {
+      "label": "User actions menu"
+    }
+  },
+  "items": {
+    "title": "Items Management",
+    "addItem": "Add Item",
+    "editItem": "Edit Item",
+    "deleteItem": "Delete Item",
+    "table": {
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "actions": "Actions",
+      "noDescription": "N/A"
+    },
+    "emptyState": {
+      "title": "You don't have any items yet",
+      "description": "Add a new item to get started"
+    },
+    "addItemDialog": {
+      "title": "Add Item",
+      "description": "Fill in the details to add a new item.",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Item Title",
+      "titleRequired": "Title is required.",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Item Description",
+      "submit": "Save",
+      "cancel": "Cancel",
+      "success": "Item created successfully.",
+      "error": "Failed to create item"
+    },
+    "editItemDialog": {
+      "title": "Edit Item",
+      "description": "Update the item details below.",
+      "submit": "Save",
+      "cancel": "Cancel",
+      "success": "Item updated successfully.",
+      "error": "Failed to update item"
+    },
+    "deleteItemDialog": {
+      "title": "Delete Item",
+      "description": "Are you sure you want to delete this item? This action cannot be undone.",
+      "submit": "Delete",
+      "cancel": "Cancel",
+      "success": "Item deleted successfully",
+      "error": "Failed to delete item"
+    },
+    "actionsMenu": {
+      "label": "Item actions menu",
+      "edit": "Edit Item",
+      "delete": "Delete Item"
+    },
+    "noItems": "No items available",
+    "loadingItems": "Loading..."
+  }
+}

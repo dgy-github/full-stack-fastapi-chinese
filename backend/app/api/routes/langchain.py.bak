@@ -1,0 +1,202 @@
+"""
+LangChain 相关 API 路由
+"""
+
+from fastapi import APIRouter, HTTPException, status
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel, Field
+
+from app.core.config import settings
+from app.api.services import get_deepseek_service
+
+router = APIRouter()
+
+
+# ============ Request/Response Models ============
+
+class ChatRequest(BaseModel):
+    """聊天请求模型"""
+    message: str = Field(..., min_length=1, max_length=4000, description="用户消息内容")
+    system_prompt: str | None = Field(None, max_length=2000, description="可选的系统提示词")
+    temperature: float | None = Field(None, ge=0.0, le=2.0, description="温度参数 (0.0-2.0)")
+    max_tokens: int | None = Field(None, ge=1, le=4000, description="最大 token 数")
+    stream: bool = Field(False, description="是否使用流式响应")
+
+
+class ChatResponse(BaseModel):
+    """聊天响应模型"""
+    response: str = Field(..., description="AI 回复内容")
+    model: str = Field(..., description="使用的模型名称")
+
+
+class HealthResponse(BaseModel):
+    """健康检查响应模型"""
+    status: str = Field(..., description="服务状态")
+    deepseek_configured: bool = Field(..., description="DeepSeek 是否已配置")
+
+
+class ModelInfoResponse(BaseModel):
+    """模型信息响应"""
+    model: str
+    base_url: str
+    configured: bool
+
+
+# ============ API Endpoints ============
+
+@router.get(
+    "/health",
+    response_model=HealthResponse,
+    summary="健康检查",
+    description="检查 LangChain 和 DeepSeek 服务状态"
+)
+async def health_check():
+    """健康检查端点"""
+    return HealthResponse(
+        status="healthy",
+        deepseek_configured=bool(settings.DEEPSEEK_API_KEY)
+    )
+
+
+@router.get(
+    "/model-info",
+    response_model=ModelInfoResponse,
+    summary="获取模型信息",
+    description="获取当前配置的 DeepSeek 模型信息"
+)
+async def get_model_info():
+    """获取模型配置信息"""
+    try:
+        service = get_deepseek_service()
+        info = service.get_model_info()
+        return ModelInfoResponse(**info)
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Service not configured: {str(e)}"
+        )
+
+
+@router.post(
+    "/chat",
+    response_model=ChatResponse,
+    summary="AI 对话",
+    description="与 DeepSeek AI 进行对话交互，支持流式和非流式响应"
+)
+async def chat(request: ChatRequest):
+    """
+    与 DeepSeek AI 对话
+
+    - **message**: 用户消息内容（必填）
+    - **system_prompt**: 系统提示词（可选）
+    - **temperature**: 温度参数，控制随机性（可选，0.0-2.0）
+    - **max_tokens**: 最大 token 数（可选）
+    - **stream**: 是否使用流式响应（可选，默认 false）
+    """
+    # 检查配置
+    if not settings.DEEPSEEK_API_KEY:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="DeepSeek API key not configured"
+        )
+
+    try:
+        # 获取服务实例
+        service = get_deepseek_service()
+
+        # 流式响应
+        if request.stream:
+            async def generate():
+                try:
+                    async for chunk in service.stream_chat(
+                            message=request.message,
+                            system_prompt=request.system_prompt
+                    ):
+                        yield chunk
+                except Exception as e:
+                    yield f"\n\n[Error: {str(e)}]"
+
+            return StreamingResponse(
+                generate(),
+                media_type="text/event-stream"
+            )
+
+        # 非流式响应
+        response = await service.chat(
+            message=request.message,
+            system_prompt=request.system_prompt,
+            temperature=request.temperature,
+            max_tokens=request.max_tokens
+        )
+
+        return ChatResponse(
+            response=response,
+            model=settings.DEEPSEEK_MODEL_NAME
+        )
+
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Service configuration error: {str(e)}"
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to get response from DeepSeek: {str(e)}"
+        )
+
+
+@router.post(
+    "/chat/stream",
+    summary="流式 AI 对话",
+    description="与 DeepSeek AI 进行流式对话，实时返回生成的内容"
+)
+async def chat_stream(request: ChatRequest):
+    """
+    流式对话端点
+
+    返回 Server-Sent Events (SSE) 格式的流式响应
+    """
+    if not settings.DEEPSEEK_API_KEY:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="DeepSeek API key not configured"
+        )
+
+    try:
+        service = get_deepseek_service()
+
+        async def generate():
+            try:
+                async for chunk in service.stream_chat(
+                        message=request.message,
+                        system_prompt=request.system_prompt
+                ):
+                    # SSE 格式
+                    yield f"data: {chunk}\n\n"
+
+                # 发送结束标记
+                yield "data: [DONE]\n\n"
+
+            except Exception as e:
+                yield f"data: [ERROR: {str(e)}]\n\n"
+
+        return StreamingResponse(
+            generate(),
+            media_type="text/event-stream",
+            headers={
+                "Cache-Control": "no-cache",
+                "Connection": "keep-alive",
+            }
+        )
+
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Service configuration error: {str(e)}"
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to initialize stream: {str(e)}"
+        )

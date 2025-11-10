@@ -1,0 +1,83 @@
+import { Container, Heading, Tabs } from "@chakra-ui/react"
+import { createFileRoute } from "@tanstack/react-router"
+import { useTranslation } from "react-i18next"
+import { useMemo } from "react"
+
+import Appearance from "@/components/UserSettings/Appearance"
+import ChangePassword from "@/components/UserSettings/ChangePassword"
+import DeleteAccount from "@/components/UserSettings/DeleteAccount"
+import UserInformation from "@/components/UserSettings/UserInformation"
+import useAuth from "@/hooks/useAuth"
+
+export const Route = createFileRoute("/_layout/settings")({
+  component: UserSettings,
+})
+
+function UserSettings() {
+  const { t } = useTranslation()
+  const { user: currentUser } = useAuth()
+
+  const tabsConfig = useMemo(() => [
+    {
+      value: "my-profile",
+      title: t('settings.tabs.myProfile'),
+      component: UserInformation
+    },
+    {
+      value: "password",
+      title: t('settings.tabs.password'),
+      component: ChangePassword
+    },
+    {
+      value: "appearance",
+      title: t('settings.tabs.appearance'),
+      component: Appearance
+    },
+    {
+      value: "danger-zone",
+      title: t('settings.tabs.dangerZone'),
+      component: DeleteAccount
+    },
+  ], [t])
+
+  const finalTabs = useMemo(() =>
+    currentUser?.is_superuser
+      ? tabsConfig.slice(0, 3)
+      : tabsConfig,
+    [currentUser?.is_superuser, tabsConfig]
+  )
+
+  if (!currentUser) {
+    return null
+  }
+
+  return (
+    <Container maxW="full">
+      {/* 页面头部 - 简化版 */}
+      <Heading
+        size="lg"
+        textAlign={{ base: "center", md: "left" }}
+        pt={12}
+        pb={12}
+      >
+        {t('settings.title')}
+      </Heading>
+
+      {/* 标签页 */}
+      <Tabs.Root defaultValue="my-profile" variant="subtle">
+        <Tabs.List>
+          {finalTabs.map((tab) => (
+            <Tabs.Trigger key={tab.value} value={tab.value}>
+              {tab.title}
+            </Tabs.Trigger>
+          ))}
+        </Tabs.List>
+        {finalTabs.map((tab) => (
+          <Tabs.Content key={tab.value} value={tab.value}>
+            <tab.component />
+          </Tabs.Content>
+        ))}
+      </Tabs.Root>
+    </Container>
+  )
+}
