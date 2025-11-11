@@ -40,7 +40,7 @@ function Navbar() {
       </Link>
 
       {/* 右侧：语言切换器 + 用户菜单 */}
-      <Flex gap={3} alignItems="center">
+      <Flex gap={2} alignItems="center">
         <LanguageSwitcher />
         <UserMenu />
       </Flex>

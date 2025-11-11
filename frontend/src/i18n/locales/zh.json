@@ -137,6 +137,7 @@
     "items": "项目",
     "userSettings": "用户设置",
     "admin": "管理员",
+    "aiTranslation": "AI翻译",
     "logout": "退出登录",
     "loggedInAs": "当前登录为"
   },
@@ -311,6 +312,46 @@
     },
     "noItems": "暂无项目",
     "loadingItems": "加载中..."
+  },
+  "aiTranslation": {
+    "title": "AI翻译设置",
+    "provider": "AI服务提供商",
+    "apiKey": "API密钥",
+    "apiKeyPlaceholder": "请输入您的API密钥...",
+    "model": "模型",
+    "status": "状态",
+    "connected": "已连接",
+    "notConnected": "未连接",
+    "settings": "AI翻译设置",
+    "translateNow": "立即翻译",
+    "translating": "翻译中...",
+    "translated": "已翻译",
+    "original": "原文",
+    "aiTranslated": "AI翻译",
+    "connectionSuccess": "连接成功",
+    "connectionSuccessDesc": "AI翻译服务运行正常",
+    "connectionFailed": "连接AI服务失败",
+    "notConfigured": "AI翻译未配置",
+    "configureFirst": "请先配置AI翻译设置",
+    "apiKeyRequired": "需要API密钥",
+    "configSaved": "AI翻译配置保存成功",
+    "configError": "保存AI配置失败",
+    "translationFailed": "翻译文本失败",
+    "languageChanged": "语言已更改",
+    "languageChangedDesc": "语言已切换为{language}",
+    "languageChangeError": "切换语言失败"
+  },
+  "common": {
+    "languageChanged": "语言已更改",
+    "languageChangedDesc": "语言已切换为{language}",
+    "languageChangeError": "切换语言失败",
+    "error": "错误",
+    "success": "成功",
+    "configured": "已配置",
+    "testing": "测试中...",
+    "saving": "保存中...",
+    "test": "测试",
+    "save": "保存"
   }
 
 }

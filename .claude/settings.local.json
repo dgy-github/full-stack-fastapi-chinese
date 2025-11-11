@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(python -m alembic revision:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx typescript:*)",
+      "Bash(timeout:*)",
+      "Bash(npm install)",
+      "Bash(npm run generate-client:*)"
     ],
     "deny": [],
     "ask": []

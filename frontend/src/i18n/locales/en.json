@@ -137,6 +137,7 @@
     "items": "Items",
     "userSettings": "User Settings",
     "admin": "Admin",
+    "aiTranslation": "AI Translation",
     "logout": "Log Out",
     "loggedInAs": "Logged in as"
   },
@@ -275,5 +276,45 @@
     },
     "noItems": "No items available",
     "loadingItems": "Loading..."
+  },
+  "aiTranslation": {
+    "title": "AI Translation Settings",
+    "provider": "AI Provider",
+    "apiKey": "API Key",
+    "apiKeyPlaceholder": "Enter your API key...",
+    "model": "Model",
+    "status": "Status",
+    "connected": "Connected",
+    "notConnected": "Not Connected",
+    "settings": "AI Translation Settings",
+    "translateNow": "Translate Now",
+    "translating": "Translating...",
+    "translated": "Translated",
+    "original": "Original",
+    "aiTranslated": "AI Translated",
+    "connectionSuccess": "Connection Successful",
+    "connectionSuccessDesc": "AI translation service is working properly",
+    "connectionFailed": "Failed to connect to AI service",
+    "notConfigured": "AI Translation Not Configured",
+    "configureFirst": "Please configure AI translation settings first",
+    "apiKeyRequired": "API Key is required",
+    "configSaved": "AI translation configuration saved successfully",
+    "configError": "Failed to save AI configuration",
+    "translationFailed": "Failed to translate text",
+    "languageChanged": "Language Changed",
+    "languageChangedDesc": "Language has been changed to {language}",
+    "languageChangeError": "Failed to change language"
+  },
+  "common": {
+    "languageChanged": "Language Changed",
+    "languageChangedDesc": "Language has been changed to {language}",
+    "languageChangeError": "Failed to change language",
+    "error": "Error",
+    "success": "Success",
+    "configured": "Configured",
+    "testing": "Testing...",
+    "saving": "Saving...",
+    "test": "Test",
+    "save": "Save"
   }
 }

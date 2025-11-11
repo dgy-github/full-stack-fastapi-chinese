@@ -26,6 +26,7 @@ const SidebarItems = ({ onClose }: SidebarItemsProps) => {
     { icon: FiHome, titleKey: "sidebar.dashboard", path: "/" },
     { icon: FiBriefcase, titleKey: "sidebar.items", path: "/items" },
     { icon: FiSettings, titleKey: "sidebar.userSettings", path: "/settings" },
+    { icon: FiBriefcase, titleKey: "sidebar.aiTranslation", path: "/ai-translation-demo" },
   ]
 
   const finalItems: Item[] = currentUser?.is_superuser
