@@ -56,7 +56,15 @@ class DeepSeekWithStorageService:
             max_tokens=max_tokens
         )
 
-        db_session = ChatSession.from_orm(session_data)
+        db_session = ChatSession(
+            user_id=session_data.user_id,
+            title=session_data.title,
+            system_prompt=session_data.system_prompt,
+            model_name=session_data.model_name,
+            temperature=session_data.temperature,
+            max_tokens=session_data.max_tokens,
+            is_active=session_data.is_active
+        )
         db.add(db_session)
         await db.commit()
         await db.refresh(db_session)
@@ -187,6 +195,7 @@ class DeepSeekWithStorageService:
                 created_at=start_time
             )
             db.add(user_message)
+            await db.flush()  # 确保获取ID
 
             # 调用 AI API
             api_start_time = datetime.utcnow()
@@ -302,6 +311,7 @@ class DeepSeekWithStorageService:
                 created_at=start_time
             )
             db.add(user_message)
+            await db.flush()  # 确保获取ID
 
             api_start_time = datetime.utcnow()
             full_response = ""

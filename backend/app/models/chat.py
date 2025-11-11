@@ -72,12 +72,20 @@ class ChatSession(ChatSessionBase, table=True):
     user: Optional["User"] = Relationship(back_populates="chat_sessions")
     messages: list["ChatMessage"] = Relationship(back_populates="session", cascade_delete=True)
 
-    @classmethod
-    def from_orm(cls, obj):
-        """兼容性方法"""
-        if hasattr(obj, "__dict__"):
-            return cls(**obj.__dict__)
-        return obj
+    def model_dump(self, **kwargs):
+        """兼容性方法 - 替代 dict()"""
+        return {
+            "id": str(self.id),
+            "user_id": str(self.user_id) if self.user_id else None,
+            "title": self.title,
+            "system_prompt": self.system_prompt,
+            "model_name": self.model_name,
+            "temperature": self.temperature,
+            "max_tokens": self.max_tokens,
+            "is_active": self.is_active,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }
 
 
 class ChatMessage(ChatMessageBase, table=True):
@@ -96,12 +104,20 @@ class ChatMessage(ChatMessageBase, table=True):
     # 关系
     session: Optional[ChatSession] = Relationship(back_populates="messages")
 
-    @classmethod
-    def from_orm(cls, obj):
-        """兼容性方法"""
-        if hasattr(obj, "__dict__"):
-            return cls(**obj.__dict__)
-        return obj
+    def model_dump(self, **kwargs):
+        """兼容性方法 - 替代 dict()"""
+        return {
+            "id": str(self.id),
+            "session_id": str(self.session_id),
+            "role": self.role,
+            "content": self.content,
+            "token_count": self.token_count,
+            "finish_reason": self.finish_reason,
+            "created_at": self.created_at,
+            "sequence_number": self.sequence_number,
+            "model_used": self.model_used,
+            "response_time_ms": self.response_time_ms
+        }
 
 
 # ============================================

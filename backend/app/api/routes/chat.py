@@ -12,7 +12,7 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.deps import get_current_user, get_session
+from app.api.deps import get_current_user_async, AsyncSessionDep
 from app.models import (
     User, ChatRequest, ChatResponse, ChatStreamResponse,
     ChatSessionPublic, ChatSessionsPublic, ChatMessagesPublic,
@@ -36,8 +36,8 @@ async def create_chat_session(
     system_prompt: Optional[str] = Query(None, description="系统提示词"),
     temperature: float = Query(0.7, ge=0.0, le=2.0, description="温度参数"),
     max_tokens: int = Query(2000, ge=1, le=8000, description="最大令牌数"),
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_session)
+    current_user: User = Depends(get_current_user_async),
+    db: AsyncSession = AsyncSessionDep
 ):
     """创建新的聊天会话"""
     try:
@@ -50,7 +50,7 @@ async def create_chat_session(
             temperature=temperature,
             max_tokens=max_tokens
         )
-        return ChatSessionPublic.from_orm(session)
+        return ChatSessionPublic.model_validate(session.model_dump())
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -67,8 +67,8 @@ async def create_chat_session(
 async def list_chat_sessions(
     limit: int = Query(50, ge=1, le=100, description="每页数量"),
     offset: int = Query(0, ge=0, description="偏移量"),
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_session)
+    current_user: User = Depends(get_current_user_async),
+    db: AsyncSession = AsyncSessionDep
 ):
     """获取用户的所有活跃会话"""
     try:
@@ -110,8 +110,8 @@ async def list_chat_sessions(
 )
 async def get_chat_session(
     session_id: uuid.UUID,
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_session)
+    current_user: User = Depends(get_current_user_async),
+    db: AsyncSession = AsyncSessionDep
 ):
     """获取会话详情和历史消息"""
     try:
@@ -133,8 +133,8 @@ async def get_chat_session(
         stats = ChatSessionStats(**stats_dict) if stats_dict else None
 
         return ChatHistoryResponse(
-            session=ChatSessionPublic.from_orm(session),
-            messages=[ChatMessagePublic.from_orm(msg) for msg in messages],
+            session=ChatSessionPublic.model_validate(session.model_dump()),
+            messages=[ChatMessagePublic.model_validate(msg.model_dump()) for msg in messages],
             stats=stats
         )
     except HTTPException:
@@ -153,8 +153,8 @@ async def get_chat_session(
 )
 async def delete_chat_session(
     session_id: uuid.UUID,
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_session)
+    current_user: User = Depends(get_current_user_async),
+    db: AsyncSession = AsyncSessionDep
 ):
     """删除会话（软删除）"""
     try:
@@ -186,8 +186,8 @@ async def delete_chat_session(
 async def get_chat_messages(
     session_id: uuid.UUID,
     limit: int = Query(100, ge=1, le=1000, description="消息数量限制"),
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_session)
+    current_user: User = Depends(get_current_user_async),
+    db: AsyncSession = AsyncSessionDep
 ):
     """获取会话的消息列表"""
     try:
@@ -205,7 +205,7 @@ async def get_chat_messages(
         messages = await service.get_session_messages(db, session_id, current_user.id, limit=limit)
 
         return ChatMessagesPublic(
-            data=[ChatMessagePublic.from_orm(msg) for msg in messages],
+            data=[ChatMessagePublic.model_validate(msg.model_dump()) for msg in messages],
             count=len(messages)
         )
     except HTTPException:
@@ -225,8 +225,8 @@ async def get_chat_messages(
 )
 async def get_session_statistics(
     session_id: uuid.UUID,
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_session)
+    current_user: User = Depends(get_current_user_async),
+    db: AsyncSession = AsyncSessionDep
 ):
     """获取会话统计信息"""
     try:
@@ -259,8 +259,8 @@ async def get_session_statistics(
 )
 async def chat_with_storage(
     request: ChatRequest,
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_session)
+    current_user: User = Depends(get_current_user_async),
+    db: AsyncSession = AsyncSessionDep
 ):
     """与AI对话并存储到会话中"""
     try:
@@ -290,8 +290,8 @@ async def chat_with_storage(
 )
 async def stream_chat_with_storage(
     request: ChatRequest,
-    current_user: User = Depends(get_current_user),
-    db: AsyncSession = Depends(get_session)
+    current_user: User = Depends(get_current_user_async),
+    db: AsyncSession = AsyncSessionDep
 ):
     """流式聊天并存储到会话中"""
     try:
