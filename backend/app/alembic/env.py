@@ -18,8 +18,11 @@ fileConfig(config.config_file_name)
 # target_metadata = mymodel.Base.metadata
 # target_metadata = None
 
-from app.models import SQLModel  # noqa
-from app.core.config import settings # noqa
+from sqlmodel import SQLModel
+from app.core.config import settings
+
+# 导入所有模型以确保它们被注册
+from app.models import *  # noqa
 
 target_metadata = SQLModel.metadata
 

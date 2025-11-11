@@ -9,6 +9,7 @@ from sqlmodel import Field, Relationship, SQLModel
 
 if TYPE_CHECKING:
     from .item import Item
+    from .chat import ChatSession
 
 
 # ============================================
@@ -63,6 +64,7 @@ class User(UserBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     hashed_password: str
     items: list["Item"] = Relationship(back_populates="owner", cascade_delete=True)
+    chat_sessions: list["ChatSession"] = Relationship(back_populates="user", cascade_delete=True)
 
 
 # ============================================

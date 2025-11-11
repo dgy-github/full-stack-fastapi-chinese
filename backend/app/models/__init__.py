@@ -41,6 +41,26 @@ from .auth import (
     TokenPayload,
 )
 
+# 聊天模型
+from .chat import (
+    ChatSession,
+    ChatSessionBase,
+    ChatSessionCreate,
+    ChatSessionPublic,
+    ChatSessionsPublic,
+    ChatSessionUpdate,
+    ChatSessionStats,
+    ChatMessage,
+    ChatMessageBase,
+    ChatMessageCreate,
+    ChatMessagePublic,
+    ChatMessagesPublic,
+    ChatRequest,
+    ChatResponse,
+    ChatStreamResponse,
+    ChatHistoryResponse,
+)
+
 # 定义 __all__ 以便于 IDE 自动补全和显式导出
 __all__ = [
     # 基础
@@ -70,4 +90,22 @@ __all__ = [
     "NewPassword",
     "Token",
     "TokenPayload",
+
+    # 聊天
+    "ChatSession",
+    "ChatSessionBase",
+    "ChatSessionCreate",
+    "ChatSessionPublic",
+    "ChatSessionsPublic",
+    "ChatSessionUpdate",
+    "ChatSessionStats",
+    "ChatMessage",
+    "ChatMessageBase",
+    "ChatMessageCreate",
+    "ChatMessagePublic",
+    "ChatMessagesPublic",
+    "ChatRequest",
+    "ChatResponse",
+    "ChatStreamResponse",
+    "ChatHistoryResponse",
 ]

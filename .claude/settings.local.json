@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m alembic revision:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -2,6 +2,8 @@
 DeepSeek AI 服务模块
 
 提供与 DeepSeek API 的集成功能
+
+注意：建议使用 deepseek_with_storage.py 来获得完整的会话管理功能
 """
 
 from typing import Optional
