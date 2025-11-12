@@ -4,6 +4,7 @@ import { createFileRoute, Outlet, redirect } from "@tanstack/react-router"
 import Navbar from "@/components/Common/Navbar"
 import Sidebar from "@/components/Common/Sidebar"
 import { isLoggedIn } from "@/hooks/useAuth"
+import useDynamicTranslation from "@/hooks/useDynamicTranslation"
 
 export const Route = createFileRoute("/_layout")({
   component: Layout,
@@ -17,6 +18,9 @@ export const Route = createFileRoute("/_layout")({
 })
 
 function Layout() {
+  // 使用动态翻译管理
+  useDynamicTranslation();
+
   return (
     <Flex direction="column" h="100vh">
       <Navbar />

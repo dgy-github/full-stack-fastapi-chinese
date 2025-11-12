@@ -9,7 +9,13 @@
       "Bash(npx typescript:*)",
       "Bash(timeout:*)",
       "Bash(npm install)",
-      "Bash(npm run generate-client:*)"
+      "Bash(npm run generate-client:*)",
+      "Bash(curl:*)",
+      "Bash(pip install:*)",
+      "Bash(uv sync:*)",
+      "Bash(ssh:*)",
+      "Bash(expect:*)",
+      "Bash(uv run python:*)"
     ],
     "deny": [],
     "ask": []

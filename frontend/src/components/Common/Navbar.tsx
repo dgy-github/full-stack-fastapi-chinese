@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router"
 
 import Logo from "/assets/images/mysiteLogo.svg"
 import UserMenu from "./UserMenu"
-import LanguageSwitcher from "@/components/LanguageSwitcher"
+import DynamicLanguageSwitcher from "@/components/Common/DynamicLanguageSwitcher"
 
 function Navbar() {
   const display = useBreakpointValue({ base: "none", md: "flex" })
@@ -41,7 +41,7 @@ function Navbar() {
 
       {/* 右侧：语言切换器 + 用户菜单 */}
       <Flex gap={2} alignItems="center">
-        <LanguageSwitcher />
+        <DynamicLanguageSwitcher />
         <UserMenu />
       </Flex>
     </Flex>

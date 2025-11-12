@@ -1,7 +1,7 @@
 """
 API Routes Package
 
-+@	APIï1!W
++@	APIï¿½1!W
 """
 
 from . import chat, items, login, private, users, utils, langchain

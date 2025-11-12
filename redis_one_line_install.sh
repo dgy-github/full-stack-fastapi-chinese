@@ -1,0 +1,3 @@
+#!/bin/bash
+# Redis 一键安装脚本 - 复制这整行到SSH会话中执行
+apt update -y && apt upgrade -y && apt install redis-server -y && systemctl start redis-server && systemctl enable redis-server && cp /etc/redis/redis.conf /etc/redis/redis.conf.backup && sed -i 's/bind 127.0.0.1/bind 0.0.0.0/' /etc/redis/redis.conf && sed -i 's/protected-mode yes/protected-mode no/' /etc/redis/redis.conf && systemctl restart redis-server && echo "=== Redis安装完成 ===" && systemctl status redis-server --no-pager && redis-cli ping && netstat -tlnp | grep :6379 && redis-server --version

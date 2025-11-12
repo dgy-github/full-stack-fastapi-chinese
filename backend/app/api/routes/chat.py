@@ -32,12 +32,12 @@ router = APIRouter()
     description="创建新的聊天会话"
 )
 async def create_chat_session(
+    db: AsyncSessionDep,
+    current_user: User = Depends(get_current_user_async),
     title: str = Query(..., description="会话标题"),
     system_prompt: Optional[str] = Query(None, description="系统提示词"),
     temperature: float = Query(0.7, ge=0.0, le=2.0, description="温度参数"),
     max_tokens: int = Query(2000, ge=1, le=8000, description="最大令牌数"),
-    current_user: User = Depends(get_current_user_async),
-    db: AsyncSession = AsyncSessionDep
 ):
     """创建新的聊天会话"""
     try:
@@ -65,10 +65,10 @@ async def create_chat_session(
     description="获取用户的所有聊天会话"
 )
 async def list_chat_sessions(
+    db: AsyncSessionDep,
+    current_user: User = Depends(get_current_user_async),
     limit: int = Query(50, ge=1, le=100, description="每页数量"),
     offset: int = Query(0, ge=0, description="偏移量"),
-    current_user: User = Depends(get_current_user_async),
-    db: AsyncSession = AsyncSessionDep
 ):
     """获取用户的所有活跃会话"""
     try:
@@ -110,8 +110,8 @@ async def list_chat_sessions(
 )
 async def get_chat_session(
     session_id: uuid.UUID,
+    db: AsyncSessionDep,
     current_user: User = Depends(get_current_user_async),
-    db: AsyncSession = AsyncSessionDep
 ):
     """获取会话详情和历史消息"""
     try:
@@ -153,8 +153,8 @@ async def get_chat_session(
 )
 async def delete_chat_session(
     session_id: uuid.UUID,
+    db: AsyncSessionDep,
     current_user: User = Depends(get_current_user_async),
-    db: AsyncSession = AsyncSessionDep
 ):
     """删除会话（软删除）"""
     try:
@@ -185,9 +185,9 @@ async def delete_chat_session(
 )
 async def get_chat_messages(
     session_id: uuid.UUID,
-    limit: int = Query(100, ge=1, le=1000, description="消息数量限制"),
+    db: AsyncSessionDep,
     current_user: User = Depends(get_current_user_async),
-    db: AsyncSession = AsyncSessionDep
+    limit: int = Query(100, ge=1, le=1000, description="消息数量限制"),
 ):
     """获取会话的消息列表"""
     try:
@@ -225,8 +225,8 @@ async def get_chat_messages(
 )
 async def get_session_statistics(
     session_id: uuid.UUID,
+    db: AsyncSessionDep,
     current_user: User = Depends(get_current_user_async),
-    db: AsyncSession = AsyncSessionDep
 ):
     """获取会话统计信息"""
     try:
@@ -259,8 +259,8 @@ async def get_session_statistics(
 )
 async def chat_with_storage(
     request: ChatRequest,
+    db: AsyncSessionDep,
     current_user: User = Depends(get_current_user_async),
-    db: AsyncSession = AsyncSessionDep
 ):
     """与AI对话并存储到会话中"""
     try:
@@ -290,8 +290,8 @@ async def chat_with_storage(
 )
 async def stream_chat_with_storage(
     request: ChatRequest,
+    db: AsyncSessionDep,
     current_user: User = Depends(get_current_user_async),
-    db: AsyncSession = AsyncSessionDep
 ):
     """流式聊天并存储到会话中"""
     try:

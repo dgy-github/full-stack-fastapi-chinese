@@ -2,7 +2,7 @@ import { Box, Flex, Icon, Text } from "@chakra-ui/react"
 import { useQueryClient } from "@tanstack/react-query"
 import { Link as RouterLink } from "@tanstack/react-router"
 import { useTranslation } from "react-i18next"
-import { FiBriefcase, FiHome, FiSettings, FiUsers } from "react-icons/fi"
+import { FiBriefcase, FiHome, FiSettings, FiUsers, FiGlobe } from "react-icons/fi"
 import type { IconType } from "react-icons/lib"
 
 import type { UserPublic } from "@/client"
@@ -26,7 +26,7 @@ const SidebarItems = ({ onClose }: SidebarItemsProps) => {
     { icon: FiHome, titleKey: "sidebar.dashboard", path: "/" },
     { icon: FiBriefcase, titleKey: "sidebar.items", path: "/items" },
     { icon: FiSettings, titleKey: "sidebar.userSettings", path: "/settings" },
-    { icon: FiBriefcase, titleKey: "sidebar.aiTranslation", path: "/ai-translation-demo" },
+    { icon: FiGlobe, titleKey: "sidebar.aiTranslation", path: "/ai-translation-demo" },
   ]
 
   const finalItems: Item[] = currentUser?.is_superuser
